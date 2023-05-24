@@ -15,6 +15,10 @@ classDiagram
     }
       class Controller{
           +main()
+          +crearCoche(String, String)
+          +subirVelocidad(String)
+          +bajarVelocidad(String)
+          +verDatosCoche(String)
       }
       class View {
       +muestraVelocidad(String, Integer)
@@ -27,9 +31,18 @@ classDiagram
           +cambiarVelocidad(String, Integer)
           +getVelocidad(String)
       }
+      
+      class IU { +crearVentana()}
+      
+      class Dialog { 
+        +Dialog() 
+        +vDialogo(String)  
+      }
     Controller "1" *-- "1" Model : association
     Controller "1" *-- "1" View : association
+    Controller "1" *-- "1" IU : association
     Model "1" *-- "1..n" Coche : association
+    View "1" *-- "1" Dialog : association
       
 ```
 
