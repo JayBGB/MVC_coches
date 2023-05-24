@@ -29,7 +29,7 @@ public class Model {
     }
 
     /**
-     * Busca coche segun matricula
+     * Busca coche según matricula
      *
      * @param matricula a buscar
      * @return coche o null si no existe
@@ -68,7 +68,7 @@ public class Model {
     }
 
     /**
-     * Devuelve la velocidad segun la matricula
+     * Devuelve la velocidad según la matrícula
      *
      * @param matricula
      * @return

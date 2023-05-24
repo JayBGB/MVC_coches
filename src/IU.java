@@ -14,6 +14,9 @@ public class IU {
 
     private JButton button3;
 
+    /**
+     * Constructor de la interfaz
+     */
     public IU() {
         bCrear.addActionListener(new ActionListener() {
             @Override
@@ -43,6 +46,9 @@ public class IU {
         });
     }
 
+    /**
+     * Crea la ventana
+     */
     public static void crearVentana() {
         JFrame frame = new JFrame("Ventana coches");
         frame.setContentPane(new IU().panel1);

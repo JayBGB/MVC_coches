@@ -4,6 +4,12 @@ public class Controller {
     public static void main(String[] args) {
         IU.crearVentana();
     }
+
+    /**
+     *
+     * @param modelo
+     * @param matricula
+     */
     public static void crearCoche(String modelo, String matricula){
         Coche aux = miModelo.crearCoche(modelo,matricula);
         if(aux!=null){
@@ -11,11 +17,19 @@ public class Controller {
         }
     }
 
+    /**
+     *
+     * @param matricula
+     */
     public static void bajarVelocidad(String matricula){
         int aux = miModelo.bajarVelocidad(matricula);
         miVista.muestraVelocidad(matricula, aux);
     }
 
+    /**
+     *
+     * @param matricula
+     */
     public static void aumentarVelocidad(String matricula){
         int aux = miModelo.subirVelocidad(matricula);
         miVista.muestraVelocidad(matricula,aux);
