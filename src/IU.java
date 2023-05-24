@@ -12,6 +12,8 @@ public class IU {
     private JButton button1;
     private JButton button2;
 
+    private JButton button3;
+
     public IU() {
         bCrear.addActionListener(new ActionListener() {
             @Override
@@ -29,6 +31,14 @@ public class IU {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Controller.aumentarVelocidad(tMatricula.getText());
+            }
+        });
+
+
+        button3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Controller.verDatosCoche(tMatricula.getText());
             }
         });
     }
