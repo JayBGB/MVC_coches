@@ -1,21 +1,45 @@
-import java.lang.module.ModuleDescriptor;
-
 public class Controller {
+    static Model miModelo = new Model();
+    static View miVista = new View();
     public static void main(String[] args) {
+        IU.crearVentana();
+    }
 
-        // Crear tres coches
+    /**
+     *
+     * @param modelo
+     * @param matricula
+     */
+    public static void crearCoche(String modelo, String matricula){
+        Coche aux = miModelo.crearCoche(modelo,matricula);
+        if(aux!=null){
+            miVista.muestraVelocidad(aux.matricula, aux.velocidad);
+        }
+    }
 
-        Model.crearCoche("LaFerrari", "SBC 1234");
-        Model.crearCoche("Alpine", "HYU 4567");
-        Model.crearCoche("Aston Martin", "FGH 3333");
+    /**
+     *
+     * @param matricula
+     */
+    public static void bajarVelocidad(String matricula){
+        int aux = miModelo.bajarVelocidad(matricula);
+        miVista.muestraVelocidad(matricula, aux);
+    }
 
-        Coche ferrari = Model.getCoche("SBC 1234");
-        // modifica la velocidad
-        Model.cambiarVelocidad("SBC 1234", 30);
+    /**
+     *
+     * @param matricula
+     */
+    public static void aumentarVelocidad(String matricula){
+        int aux = miModelo.subirVelocidad(matricula);
+        miVista.muestraVelocidad(matricula,aux);
+    }
 
-        // recoje la velocidad y la muestra (tarea de la View)
-        boolean hecho = View.muestraVelocidad("SBC 1234", Model.getVelocidad("SBC 1234"));
+    public static void verDatosCoche(String matricula){
 
-        System.out.println(hecho);
+        Coche aux = miModelo.getCoche(matricula);
+        if(aux!=null){
+            miVista.muestraDatosCoche(aux.modelo, aux.matricula, aux.velocidad);
+        }
     }
 }

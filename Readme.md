@@ -1,6 +1,7 @@
 # Arquitectura MVC
 
-Aplicación que trabaja con objetos coches, modifica la velocidad y la muestra
+Aplicación que trabaja con objetos coches, modifica la velocidad y la muestra. 
+Además, permite buscar un coche que ya esté registrado para poder ver todos sus datos, siendo estos el modelo, la matrícula y la velocidad.
 
 ---
 ## Diagrama de clases:
@@ -14,8 +15,15 @@ classDiagram
     }
       class Controller{
           +main()
+          +crearCoche(String, String)
+          +subirVelocidad(String)
+          +bajarVelocidad(String)
+          +verDatosCoche(String)
       }
-      class View {+muestraVelocidad(String, Integer)}
+      class View {
+      +muestraVelocidad(String, Integer)
+      +muestraDatosCoche(String, String, Integer)
+      }
       class Model {
           ArrayList~Coche~: parking
           +crearCoche(String, String, String)
@@ -23,9 +31,18 @@ classDiagram
           +cambiarVelocidad(String, Integer)
           +getVelocidad(String)
       }
+      
+      class IU { +crearVentana()}
+      
+      class Dialog { 
+        +Dialog() 
+        +vDialogo(String)  
+      }
     Controller "1" *-- "1" Model : association
     Controller "1" *-- "1" View : association
+    Controller "1" *-- "1" IU : association
     Model "1" *-- "1..n" Coche : association
+    View "1" *-- "1" Dialog : association
       
 ```
 
