@@ -20,4 +20,12 @@ public class Controller {
         int aux = miModelo.subirVelocidad(matricula);
         miVista.muestraVelocidad(matricula,aux);
     }
+
+    public static void verDatosCoche(String matricula){
+
+        Coche aux = miModelo.getCoche(matricula);
+        if(aux!=null){
+            miVista.muestraDatosCoche(aux.modelo, aux.matricula, aux.velocidad);
+        }
+    }
 }
