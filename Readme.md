@@ -44,7 +44,6 @@ classDiagram
           +update(Observable, Object)
       }
       
-      }
     Controller "1" *-- "1" Model : association
     Controller "1" *-- "1" View : association
     Controller "1" *-- "1" IU : association
