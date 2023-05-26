@@ -1,6 +1,11 @@
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Model {
+/**
+ * Model hereda de Observable para poder notificar
+ */
+
+public class Model extends Observable {
     static ArrayList<Coche> parking = new ArrayList<>();
 
     /**
@@ -9,10 +14,24 @@ public class Model {
      * @param matricula identificador unico
      * @return el coche creado
      */
-    public static Coche crearCoche(String modelo, String matricula){
+    public Coche crearCoche(String modelo, String matricula){
         Coche aux = new Coche(modelo, matricula);
         parking.add(aux);
         return aux;
+    }
+
+    /**
+     * Cambia la velocidad del coche y notifica a los observadores
+     * @param matricula
+     * @param v
+     */
+    public void cambiarVelocidad(String matricula, Integer v) {
+        // busca el coche
+        getCoche(matricula).velocidad = v;
+        // cambio de velocidad
+        setChanged();
+        // se notifica a los observadores
+        notifyObservers(getCoche(matricula));
     }
 
     /**
@@ -20,7 +39,7 @@ public class Model {
      * @param matricula a buscar
      * @return chche o null si no existe
      */
-    public static Coche getCoche(String matricula){
+    public Coche getCoche(String matricula){
         Coche aux = null;
         // recorre el array buscando por matricula
         for (Coche e: parking) {
@@ -32,24 +51,38 @@ public class Model {
     }
 
     /**
-     *
+     * Al subir la velocidad se notifica a los observadores
      * @param matricula
-     * @param v nueva velocidad
      * @return velocidad modificada
      */
-    public static Integer cambiarVelocidad(String matricula, Integer v) {
-        // busca el coche
-        getCoche(matricula).velocidad = v;
-        // retorna la nueva velocidad
-        return getCoche(matricula).velocidad;
+    public void subirVelocidad(String matricula) {
+        // busca el coche y sube la velocidad
+        getCoche(matricula).velocidad = getCoche(matricula).velocidad + 10;
+        // se cambia el parámetro subiendo la velocidad
+        setChanged();
+        // se notifica a los observadores
+        notifyObservers(getCoche(matricula));
     }
 
     /**
-     * Ddevuelve la velocidad segun la matricula
+     * @param matricula
+     * @return velocidad modificada
+     */
+    public void bajarVelocidad(String matricula) {
+        // busca el coche y sube la velocidad
+        getCoche(matricula).velocidad = getCoche(matricula).velocidad - 10;
+        // se cambia el parámetro bajando la velocidad
+        setChanged();
+        // se notifica a los observadores
+        notifyObservers(getCoche(matricula));
+    }
+
+    /**
+     * Devuelve la velocidad segun la matricula
      * @param matricula
      * @return
      */
-    public static Integer getVelocidad(String matricula) {
+    public Integer getVelocidad(String matricula) {
         return getCoche(matricula).velocidad;
     }
 }

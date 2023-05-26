@@ -1,6 +1,10 @@
 public class View {
-    static boolean muestraVelocidad(String matricula, Integer v){
-        System.out.println(matricula + ": " + v + "km/hr");
-        return true;
+    /**
+     * Muestra la velocidad del coche
+     * @param matricula
+     * @param v
+     */
+    void muestraVelocidad(String matricula, Integer v){
+        Dialog.vDialogo("El coche con matrícula" + matricula + " va a una velocidad de: " + v + "km/h");
     }
 }
