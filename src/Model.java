@@ -1,6 +1,11 @@
 import java.util.ArrayList;
+import java.util.Observable;
 
-public class Model {
+/**
+ * Model hereda de Observable para poder notificar
+ */
+
+public class Model extends Observable {
     static ArrayList<Coche> parking = new ArrayList<>();
 
     /**
