@@ -21,15 +21,17 @@ public class Model extends Observable {
     }
 
     /**
+     * Cambia la velocidad del coche y notifica a los observadores
      * @param matricula
-     * @param v nueva velocidad
-     * @return velocidad modificada
+     * @param v
      */
-    public Integer cambiarVelocidad(String matricula, Integer v) {
+    public void cambiarVelocidad(String matricula, Integer v) {
         // busca el coche
         getCoche(matricula).velocidad = v;
-        // retorna la nueva velocidad
-        return getCoche(matricula).velocidad;
+        // cambio de velocidad
+        setChanged();
+        // se notifica a los observadores
+        notifyObservers(getCoche(matricula));
     }
 
     /**
@@ -49,29 +51,34 @@ public class Model extends Observable {
     }
 
     /**
+     * Al subir la velocidad se notifica a los observadores
      * @param matricula
      * @return velocidad modificada
      */
-    public Integer subirVelocidad(String matricula) {
+    public void subirVelocidad(String matricula) {
         // busca el coche y sube la velocidad
         getCoche(matricula).velocidad = getCoche(matricula).velocidad + 10;
-        // retorna la nueva velocidad
-        return getCoche(matricula).velocidad;
+        // se cambia el parámetro subiendo la velocidad
+        setChanged();
+        // se notifica a los observadores
+        notifyObservers(getCoche(matricula));
     }
 
     /**
      * @param matricula
      * @return velocidad modificada
      */
-    public Integer bajarVelocidad(String matricula) {
+    public void bajarVelocidad(String matricula) {
         // busca el coche y sube la velocidad
         getCoche(matricula).velocidad = getCoche(matricula).velocidad - 10;
-        // retorna la nueva velocidad
-        return getCoche(matricula).velocidad;
+        // se cambia el parámetro bajando la velocidad
+        setChanged();
+        // se notifica a los observadores
+        notifyObservers(getCoche(matricula));
     }
 
     /**
-     * Ddevuelve la velocidad segun la matricula
+     * Devuelve la velocidad segun la matricula
      * @param matricula
      * @return
      */
