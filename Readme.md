@@ -50,10 +50,8 @@ classDiagram
     Controller "1" *-- "1" IU : association
     Model "1" *-- "1..n" Coche : association
     View "1" *-- "1" Dialog : association
-    ObsExceso "1" *-- "1" View : association
     ObsExceso "1" *-- "1" Model : association
     ObsExceso "1" *-- "1" Dialog : association
-    ObsExceso "1" *-- "1" IU : association
     ObsExceso "1" *-- "1" Controller : association
       
       
