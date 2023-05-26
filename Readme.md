@@ -48,11 +48,12 @@ classDiagram
     Controller "1" *-- "1" Model : association
     Controller "1" *-- "1" View : association
     Controller "1" *-- "1" IU : association
+    Controller "1" *-- "1" ObsExceso : association
     Model "1" *-- "1..n" Coche : association
-    View "1" *-- "1" Dialog : association
-    ObsExceso "1" *-- "1" Model : association
-    ObsExceso "1" *-- "1" Dialog : association
-    ObsExceso "1" *-- "1" Controller : association
+    Model "1" *-- "1" ObsExceso : association
+    View "1" *-- "1" Dialog : association 
+    Dialog "1" *-- "1" ObsExceso : association
+    
       
       
 ```
